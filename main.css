@@ -1,0 +1,53 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+$all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
+
+
+div#titulo {
+  background-color: rgb(255, 251, 0);
+}
+div#yo{
+  background: rgba(22, 120, 218, 0.32);
+ 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.6px);
+  -webkit-backdrop-filter: blur(1.6px);
+  border: 1px solid rgba(22, 120, 218, 0.3);
+}
+div#yo2{
+  background: rgba(255, 5, 242, 0.32);
+ 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.6px);
+  -webkit-backdrop-filter: blur(1.6px);
+  border: 1px solid rgba(19, 19, 19, 0.3);
+}
+
+
+
+
+
+body{ 
+  background: url(SP.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+
+#botones{
+  background: rgba(22, 120, 218, 0.32);
+ 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.6px);
+  -webkit-backdrop-filter: blur(1.6px);
+  border: 1px solid rgba(22, 120, 218, 0.3);
+
+}
+
+@import "bootstrap/scss/utilities/api";
