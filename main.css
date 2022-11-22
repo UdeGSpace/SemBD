@@ -27,7 +27,57 @@ div#yo2{
   border: 1px solid rgba(19, 19, 19, 0.3);
 }
 
-
+.card {
+  width: 190px;
+  height: 254px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f2f2f3;
+  border-radius: 12px;
+  box-shadow: inset 5px 5px 10px #a9a9aa77,
+               inset -5px -5px 10px #ffffff7e;
+ }
+ 
+ .card .img {
+ 
+  height: 102px;
+  margin-top: 1.1em;
+  aspect-ratio: 1;
+  border-radius: 30%;
+  background: url(imgper.png);
+  margin-bottom: 0.4em;
+  box-shadow: -5px -5px 8px #ffffff7a, 
+               5px 5px 8px #a9a9aa7a;
+ }
+ 
+ .card .info {
+  text-align: center;
+  margin-top: 0.4em;
+  background: linear-gradient(120deg, rgba(0,194,255,1) 0%, rgba(0,86,255,1) 100%);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ }
+ 
+ .card .info > span {
+  font-weight: bold;
+  font-size: 1.2em;
+ }
+ 
+ .card a {
+  margin-top: 1em;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(90deg, rgba(0,194,255,1) 0%, rgba(0,86,255,1) 100%);
+  padding: .5em 2em;
+  border-radius: 0.7em;
+ }
+ 
+ .card a:active {
+  box-shadow: inset 3px 3px 3px #0056ff,
+              inset -3px -3px 3px #00c2ff;
+ }
 
 
 
@@ -40,14 +90,78 @@ body{
   
 }
 
-#botones{
-  background: rgba(22, 120, 218, 0.32);
+.card2 {
+  width: 190px;
+  height: 254px;
+  --border-radius: 15px;
+  --border-width: 4px;
+  appearance: none;
+  position: relative;
+  padding: 1em 2em;
+  border: 0;
+  background: rgb(5, 5, 22);
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  z-index: 2;
+  border-radius: 15px;
+ }
  
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(1.6px);
-  -webkit-backdrop-filter: blur(1.6px);
-  border: 1px solid rgba(22, 120, 218, 0.3);
+ .card2::after {
+  --m-i: linear-gradient(#000, #000);
+  --m-o: content-box, padding-box;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: var(--border-width);
+  border-radius: var(--border-radius);
+  background-image: conic-gradient(
+     #488cfb,
+     #29dbbc,
+     #ddf505,
+     #ff9f0e,
+     #e440bb,
+     #655adc,
+     #488cfb
+   );
+  -webkit-mask-image: var(--m-i), var(--m-i);
+  mask-image: var(--m-i), var(--m-i);
+  -webkit-mask-origin: var(--m-o);
+  mask-origin: var(--m-o);
+  -webkit-mask-clip: var(--m-o);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  filter: hue-rotate(0);
+  animation: rotate-hue linear 500ms infinite;
+  animation-play-state: paused;
+ }
+ 
+ .card2:hover::after {
+  animation-play-state: running;
+ }
+ 
+ @keyframes rotate-hue {
+  to {
+   filter: hue-rotate(1turn);
+  }
+ }
+ 
+ .card2,
+ .card2::after {
+  box-sizing: border-box;
+ }
+ 
+ .card2:active {
+  --border-width: 5px;
+ }
 
-}
+
+
+
+
+
 
 @import "bootstrap/scss/utilities/api";
