@@ -45,7 +45,7 @@ div#yo2{
   margin-top: 1.1em;
   aspect-ratio: 1;
   border-radius: 30%;
-  background: url(imgper.png);
+  background: url(./public/imgper.png);
   margin-bottom: 0.4em;
   box-shadow: -5px -5px 8px #ffffff7a, 
                5px 5px 8px #a9a9aa7a;
@@ -82,7 +82,7 @@ div#yo2{
 
 
 body{ 
-  background: url(home1.jpg) no-repeat center center fixed; 
+  background: url(./public/home1.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

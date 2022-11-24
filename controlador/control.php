@@ -1,18 +1,31 @@
 <?php
-session_start();
+
+    require "./modelo/conexion.php";
+    $con = conecta();
+
+    $num = 0; 
+    $user = $_POST["user"];
+    $password = $_POST["password"];
+    $password = md5($password);
+    
     if(!empty($_POST["loginb"])){
-        if(!empty($_POST["user"]) and !empty($_POST["password"])){
-            $user = $_POST["user"];
-            $password = $_POST["password"];
-            $sql = mysqli_query($con,"select * from Usuarios where email='$user' and contraseña='$password'");
-            echo 'Response'.$sql;
-            if($datos=$sql){
-                echo 'Test';
-            }else{
-                echo '<div class="alert alert-danger">Acceso denegado</div>';
-            };
+        if(!empty($user) and !empty($password)){
+            $query = "select ClienteId from Clientes where mail='$user' and password='$password'";
+            $sql = $con->query($query);
+            $idU = $sql->fetch_object()->ClienteId;
+            echo $idU;    
         }else{
             echo 'Campos vacios';
-        };
-    };
+        }
+        if($sql){
+            $query = "select ClienteNom from Clientes where ClienteId ='$idU'";
+            $sql = $con->query($query);
+            $nombre = $sql->fetch_object()->ClienteNom;
+            $_SESSION['nombre'] = $nombre;
+            $_SESSION['idU'] = $idU;
+            echo "Bienvenido " . $nombre;
+        }else{
+            echo '<div class="alert alert-danger">Acceso denegado</div>';
+        }
+        }
 ?>

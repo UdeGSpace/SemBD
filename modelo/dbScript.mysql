@@ -5,10 +5,14 @@ CREATE TABLE `Clientes` (
   `ClienteApe` char(30) NOT NULL,
   `RFC` char(30) DEFAULT NULL,
   `Empresa` char(30) DEFAULT NULL,
-  `ClienteTel` int DEFAULT NULL,
+  `ClienteTel` float DEFAULT NULL,
+  `mail` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
   PRIMARY KEY (`ClienteId`),
-  UNIQUE KEY `ClienteId` (`ClienteId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `ClienteId` (`ClienteId`),
+  UNIQUE KEY `mail_UNIQUE` (`mail`),
+  UNIQUE KEY `password_UNIQUE` (`password`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `Cotizaciones` (
   `cotizacionId` bigint unsigned NOT NULL AUTO_INCREMENT,
   `IsClient` tinyint(1) DEFAULT NULL,
@@ -73,12 +77,5 @@ CREATE TABLE `Recibos` (
   UNIQUE KEY `Order_Id` (`Order_Id`),
   CONSTRAINT `recibos_ibfk_1` FOREIGN KEY (`Order_Id`) REFERENCES `OrdenCompra` (`OrderId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-CREATE TABLE `Usuarios` (
-  `fk_Id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(256) NOT NULL,
-  `contraseña` varchar(255) NOT NULL,
-  PRIMARY KEY (`fk_Id`),
-  UNIQUE KEY `fk_Id` (`fk_Id`),
-  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`fk_Id`) REFERENCES `Clientes` (`ClienteId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
