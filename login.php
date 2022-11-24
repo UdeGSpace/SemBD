@@ -8,18 +8,15 @@
   <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
-      <?php
-      include "modelo/conexion.php";
-    ?>
       <!-- Icon -->
       <div class="fadeIn first">
-        <img src="Logo.png" id="icon" />
+        <img src="./public/Logo.png" id="icon" />
       </div>
   
       <!-- Login Form -->
       <form action="" method="post">
-        <input type="text" id="login" class="fadeIn second" name="user" placeholder="login">
-        <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+        <input type="text" id="login" class="fadeIn second" name="user" placeholder="mail" required>
+        <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" required>
         <input type="submit" class="fadeIn fourth" value="Log In" name="loginb">
       </form name="submit">
       <?php
