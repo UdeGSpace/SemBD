@@ -1,0 +1,84 @@
+CREATE DATABASE `Uniformes` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE TABLE `Clientes` (
+  `ClienteId` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `ClienteNom` char(30) NOT NULL,
+  `ClienteApe` char(30) NOT NULL,
+  `RFC` char(30) DEFAULT NULL,
+  `Empresa` char(30) DEFAULT NULL,
+  `ClienteTel` int DEFAULT NULL,
+  PRIMARY KEY (`ClienteId`),
+  UNIQUE KEY `ClienteId` (`ClienteId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Cotizaciones` (
+  `cotizacionId` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `IsClient` tinyint(1) DEFAULT NULL,
+  `ClienteID` mediumtext,
+  `ClienteNom` varchar(30) DEFAULT NULL,
+  `ClienteApe` varchar(30) DEFAULT NULL,
+  `RFC` char(18) DEFAULT NULL,
+  `Empresa` char(30) DEFAULT NULL,
+  `Entrega` int DEFAULT NULL,
+  `Coste` decimal(6,2) DEFAULT NULL,
+  `Impuestos` decimal(6,2) DEFAULT NULL,
+  `Pedidos` json DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`cotizacionId`),
+  UNIQUE KEY `cotizacionId` (`cotizacionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `OrdenCompra` (
+  `OrderId` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `Pagado` decimal(6,4) DEFAULT NULL,
+  `Total` decimal(6,4) DEFAULT NULL,
+  `FechaEntrega` date DEFAULT NULL,
+  `Estatus` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`OrderId`),
+  UNIQUE KEY `OrderId` (`OrderId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Pedidos` (
+  `PedidoId` int NOT NULL,
+  `Cotizacion_ID` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `Prenda` char(20) NOT NULL,
+  `Sexo` int NOT NULL,
+  `Material` char(30) DEFAULT NULL,
+  `Descripcion` mediumblob,
+  `TipoOrden` int DEFAULT NULL,
+  `Extra` char(30) DEFAULT NULL,
+  `Estatus` int DEFAULT '0',
+  `SubTotal` decimal(6,2) DEFAULT NULL,
+  PRIMARY KEY (`PedidoId`),
+  UNIQUE KEY `Cotizacion_ID` (`Cotizacion_ID`),
+  CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`Cotizacion_ID`) REFERENCES `Cotizaciones` (`cotizacionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Produccion` (
+  `Order_Id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `Pendiente` json DEFAULT NULL,
+  `Entregado` int DEFAULT NULL,
+  `FechaIn` date DEFAULT NULL,
+  `UltiEntrega` date DEFAULT NULL,
+  `UltiEntQty` int DEFAULT NULL,
+  `IsCompleted` tinyint(1) DEFAULT NULL,
+  `Calidad` int DEFAULT NULL,
+  PRIMARY KEY (`Order_Id`),
+  UNIQUE KEY `Order_Id` (`Order_Id`),
+  CONSTRAINT `produccion_ibfk_1` FOREIGN KEY (`Order_Id`) REFERENCES `OrdenCompra` (`OrderId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Recibos` (
+  `Order_Id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `Rastreo` char(30) DEFAULT NULL,
+  `PagoFinal` mediumblob,
+  `PagoInicial` mediumblob,
+  `Confirmacion` tinyint(1) DEFAULT NULL,
+  `ConfirmDoc` mediumblob,
+  PRIMARY KEY (`Order_Id`),
+  UNIQUE KEY `Order_Id` (`Order_Id`),
+  CONSTRAINT `recibos_ibfk_1` FOREIGN KEY (`Order_Id`) REFERENCES `OrdenCompra` (`OrderId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Usuarios` (
+  `fk_Id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(256) NOT NULL,
+  `contraseña` varchar(255) NOT NULL,
+  PRIMARY KEY (`fk_Id`),
+  UNIQUE KEY `fk_Id` (`fk_Id`),
+  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`fk_Id`) REFERENCES `Clientes` (`ClienteId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
