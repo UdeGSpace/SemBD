@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+<?php
+    session_start();
+
+    if ($_SESSION['idU']) {
+        //header("Location: ./bienvenido.php");
+    }
+?>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -19,13 +26,12 @@
 
   <link rel="shortcut icon" href="index.html">
 </head>
-
 <body>
 
   <nav class="navbar navbar-dark bg-dark fixed-top">
 
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Uniformes D'Katia</a>
+      <a class="navbar-brand" href="./index.html">Uniformes D'Katia</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
         aria-controls="offcanvasDarkNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -51,8 +57,7 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crear-perfil">Hacer
                     cotizacion</a></li>
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                    data-bs-target="#formContent">Visualizar cotizaciones</a></li>
+                <li><a class="dropdown-item" href="cotizacion.php">Visualizar cotizaciones</a></li>
 
               </ul>
             </li>
