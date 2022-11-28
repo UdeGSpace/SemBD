@@ -55,8 +55,7 @@ include_once './modelo/conexion.php';
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crear-perfil">Hacer
                     cotizacion</a></li>
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#formContent">Visualizar
-                    cotizaciones</a></li>
+                    <li><a class="dropdown-item" href="cotizacion.php">Visualizar cotizaciones</a></li>
 
               </ul>
             </li>
