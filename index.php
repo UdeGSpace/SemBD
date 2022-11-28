@@ -31,7 +31,7 @@
   <nav class="navbar navbar-dark bg-dark fixed-top">
 
     <div class="container-fluid">
-      <a class="navbar-brand" href="./index.html">Uniformes D'Katia</a>
+      <a class="navbar-brand" href="./index.php">Uniformes D'Katia</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
         aria-controls="offcanvasDarkNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,6 @@
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crear-perfil">Hacer
                     cotizacion</a></li>
                 <li><a class="dropdown-item" href="cotizacion.php">Visualizar cotizaciones</a></li>
-
               </ul>
             </li>
             <li class="nav-item">
@@ -89,10 +88,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="row g-3 needs-validation was-validated" novalidate="">
-            <div class="col-md-6">
-              <label for="validationCustom01" class="form-label">Nombre empresa</label>
-              <input type="text" class="form-control" id="validationCustom01" required="">
+          <form action="./modelo/agregarcot.php" method="POST" class="row g-3 needs-validation was-validated">
+            <div class="col-md-8">
+              <label for="nombre_empresa" class="form-label">Nombre empresa</label>
+              <input type="text" name="txtEmpresa" class="form-control" id="nombre_empresa" required="">
               <div class="valid-feedback">
                 OK!
               </div>
@@ -100,9 +99,10 @@
                 Por favor ponga su nombre o empresa
               </div>
             </div>
-            <div class="col-md-6">
-              <label for="validationCustom02" class="form-label">Su nombre</label>
-              <input type="text" class="form-control" id="validationCustom02" required="">
+
+            <div class="col-md-5">
+              <label for="nombre_cotizador" class="form-label">Su nombre</label>
+              <input type="text" name="txtNombre" class="form-control" id="nombre_cotizador" required>
               <div class="valid-feedback">
                 OK!
               </div>
@@ -112,16 +112,27 @@
             </div>
 
             <div class="col-md-5">
-              <label for="validationCustom03" class="form-label">Número de contacto</label>
-              <input type="text" class="form-control" id="validationCustom03" required="10">
+              <label for="nombre_cotizador" class="form-label">Apellido</label>
+              <input type="text" name="txtApellido" class="form-control" id="apellido_cotizador" required>
+              <div class="valid-feedback">
+                OK!
+              </div>
+              <div class="invalid-feedback">
+                Por favor escriba el nombre de quien hace el pedido
+              </div>
+            </div>
+
+            <div class="col-md-5">
+              <label for="num_cot" class="form-label">Número de contacto</label>
+              <input type="text" name="txtNum" class="form-control" id="num_cot" required>
               <div class="invalid-feedback">
                 Numero a 10 digitos.
               </div>
             </div>
 
             <div class="col-md-5">
-              <label for="validationCustom02" class="form-label">Correo de contacto</label>
-              <input type="text" class="form-control" id="validationCustom02" required="">
+              <label for="correo" class="form-label">Correo de contacto</label>
+              <input type="text" name="txtCorreo" class="form-control" id="correo" required>
 
               <div class="invalid-feedback">
                 Por favor escriba el un correo para contactarlo
@@ -129,8 +140,8 @@
             </div>
 
             <div class="col-md-5">
-              <label for="validationCustom02" class="form-label">RFC</label>
-              <input type="text" class="form-control" id="validationCustom02" required="">
+              <label for="RFC" class="form-label">RFC</label>
+              <input type="text" name="txtRfc" class="form-control" id="RFC" required="">
 
               <div class="invalid-feedback">
                 Aqui el RFC
@@ -138,21 +149,19 @@
             </div>
 
             <div class="col-md-6">
-              <label for="validationCustom05" class="form-label">Cantidad de prendas</label>
-              <input type="text" class="form-control" id="validationCustom05" required="">
-
+              <label for="Cantidad_prendas" class="form-label">Cantidad de prendas</label>
+              <input type="text" name="txtCantidad" class=" form-control" id="Cantidad_prendas" required="">
             </div>
 
 
             <div class="col-15">
-              <label for="validationCustom03" class="form-label">Descripcion</label>
-              <input type="text" class="form-control" id="validationCustom03" required="10">
-
+              <label for="Descripcionp" class="form-label">Descripcion</label>
+              <input type="text" name="txtDescripcion" class="form-control" id="Descripcionp" required>
             </div>
 
             <div class="col-md-5">
-              <label for="validationCustom04" class="form-label">Metodo de entrega</label>
-              <select class="form-select" id="validationCustom04" required="">
+              <label for="MEntrega" class="form-label">Metodo de entrega</label>
+              <select name="selEntrega" class="form-select" id="MEntrega" required="">
                 <option selected="" disabled="" value="">Escoger</option>
                 <option>Recoger en matriz</option>
                 <option>Entrega directa</option>
@@ -162,8 +171,6 @@
                 Seleccione una opcion
               </div>
             </div>
-
-
           </form>
           <!-- Fin del formulario -->
 
@@ -171,8 +178,8 @@
         <div class="modal-footer">
 
           <!--botón para guardar los datos -->
-          <button class="btn btn-primary" type="submit" data-bs-toggle="modal"
-            data-bs-target="#guardado">Guardar</button>
+
+          <button class="btn btn-primary" name="btn-agr-cot" type="submit">Guardar</button>
           <!-- -->
 
           <!-- En este botón cierra el modal -->
@@ -181,6 +188,7 @@
 
 
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -221,6 +229,10 @@
             <div class="info">
               <span>Nombre</span>
               <p>Correo</p>
+              <span><? php // echo $fila['ClienteNom']; 
+                    ?> nombre</span>
+              <p> mail<?php //echo $fila['mail']; 
+                      ?></p>
             </div>
             <a href="#">Button</a>
           </div>
