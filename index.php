@@ -33,14 +33,8 @@ include_once './modelo/conexion.php';
   <nav class="navbar navbar-dark bg-dark fixed-top">
 
     <div class="container-fluid">
-<<<<<<< HEAD
       <a class="navbar-brand" href="#">Uniformes D'Katia</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-=======
-      <a class="navbar-brand" href="./index.php">Uniformes D'Katia</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
-        aria-controls="offcanvasDarkNavbar">
->>>>>>> home-page
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
@@ -61,13 +55,9 @@ include_once './modelo/conexion.php';
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crear-perfil">Hacer
                     cotizacion</a></li>
-<<<<<<< HEAD
-                <li><a class="dropdown-item" href="cotizacion.php" data-bs-toggle="modal" data-bs-target="#formContent">Visualizar
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#formContent">Visualizar
                     cotizaciones</a></li>
 
-=======
-                <li><a class="dropdown-item" href="cotizacion.php">Visualizar cotizaciones</a></li>
->>>>>>> home-page
               </ul>
             </li>
             <li class="nav-item">
@@ -107,10 +97,6 @@ include_once './modelo/conexion.php';
                 Por favor ponga su nombre o empresa
               </div>
             </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> home-page
             <div class="col-md-5">
               <label for="nombre_cotizador" class="form-label">Su nombre</label>
               <input type="text" name="txtNombre" class="form-control" id="nombre_cotizador" required>
@@ -162,20 +148,14 @@ include_once './modelo/conexion.php';
             <div class="col-md-6">
               <label for="Cantidad_prendas" class="form-label">Cantidad de prendas</label>
               <input type="text" name="txtCantidad" class=" form-control" id="Cantidad_prendas" required="">
-<<<<<<< HEAD
 
-=======
->>>>>>> home-page
             </div>
 
 
             <div class="col-15">
               <label for="Descripcionp" class="form-label">Descripcion</label>
               <input type="text" name="txtDescripcion" class="form-control" id="Descripcionp" required>
-<<<<<<< HEAD
 
-=======
->>>>>>> home-page
             </div>
 
             <div class="col-md-5">
@@ -190,24 +170,15 @@ include_once './modelo/conexion.php';
                 Seleccione una opcion
               </div>
             </div>
-<<<<<<< HEAD
 
 
 
             <!-- Fin del formulario -->
-=======
-          </form>
-          <!-- Fin del formulario -->
->>>>>>> home-page
 
         </div>
         <div class="modal-footer">
 
           <!--botón para guardar los datos -->
-<<<<<<< HEAD
-=======
-
->>>>>>> home-page
           <button class="btn btn-primary" name="btn-agr-cot" type="submit">Guardar</button>
           <!-- -->
 
@@ -255,11 +226,6 @@ include_once './modelo/conexion.php';
           <div class="card">
             <div class="img"></div>
             <div class="info">
-<<<<<<< HEAD
-=======
-              <span>Nombre</span>
-              <p>Correo</p>
->>>>>>> home-page
               <span><? php // echo $fila['ClienteNom']; 
                     ?> nombre</span>
               <p> mail<?php //echo $fila['mail']; 
