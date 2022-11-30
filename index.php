@@ -1,6 +1,9 @@
 <?php
-include_once './modelo/conexion.php';
 
+include_once './modelo/conexion.php';
+$con = conecta();
+
+session_start();
 //$query_consulta = "SELECT *  FROM pago WHERE ClienteId	 = 1 ";
 //$consulta = mysqli_query($con, $query_consulta);
 
@@ -30,6 +33,43 @@ include_once './modelo/conexion.php';
 
 <body>
 
+  <?php
+  if (isset($_POST['btn-agr-cot'])) {
+    $empresa = $_POST['txtEmpresa'];
+    $nombre = $_POST['txtNombre'];
+    $apellido = $_POST['txtApellido'];
+    $numero = $_POST['txtNum'];
+    $correo = $_POST['txtCorreo'];
+    $rfc = $_POST['txtRfc'];
+    $cantidad = $_POST['txtCantidad'];
+    $descripcion = $_POST['txtDescripcion'];
+    $entrega = $_POST['selEntrega'];
+    include_once './modelo/conexion.php';
+
+    $insert_coti = "INSERT INTO cotizaciones(ClienteNom, ClienteApe, RFC, Empresa, Entrega) 
+            VALUES ('$nombre', '$apellido', '$rfc', '$empresa', '$entrega')";
+
+    $resultado = mysqli_query($con, $insert_coti);
+
+    if ($resultado) {
+      echo "<script language='JavaScript'>
+      alert('Los datos fueron ingresados');
+      </script>";
+      header("Location: ./index.php");
+    } else {
+      echo "<script language='JavaScript'>
+      alert('Los datos fueron ingresados');
+      </script>";
+    }
+    mysqli_close($con);
+  } else {
+  }
+
+
+
+  ?>
+
+
   <nav class="navbar navbar-dark bg-dark fixed-top">
 
     <div class="container-fluid">
@@ -55,8 +95,7 @@ include_once './modelo/conexion.php';
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crear-perfil">Hacer
                     cotizacion</a></li>
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#formContent">Visualizar
-                    cotizaciones</a></li>
+                <li><a class="dropdown-item" href="cotizacion.php">Visualizar cotizaciones</a></li>
 
               </ul>
             </li>
@@ -86,7 +125,7 @@ include_once './modelo/conexion.php';
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="./modelo/agregarcot.php" method="POST" class="row g-3 needs-validation was-validated">
+          <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" class="row g-3 needs-validation was-validated">
             <div class="col-md-8">
               <label for="nombre_empresa" class="form-label">Nombre empresa</label>
               <input type="text" name="txtEmpresa" class="form-control" id="nombre_empresa" required="">
@@ -226,10 +265,9 @@ include_once './modelo/conexion.php';
           <div class="card">
             <div class="img"></div>
             <div class="info">
-              <span><? php // echo $fila['ClienteNom']; 
-                    ?> nombre</span>
-              <p> mail<?php //echo $fila['mail']; 
-                      ?></p>
+              <?php
+              echo   $_SESSION["nombre"];
+              ?>
             </div>
             <a href="#">Button</a>
           </div>

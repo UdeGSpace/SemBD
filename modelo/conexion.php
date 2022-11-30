@@ -1,8 +1,8 @@
 <?php
 define("Host", 'localhost');
-define("BD", 'uniformes');
-define("User_BD", 'admin_sgresident');
-define("Pass_BD", 'usuario1234');
+define("BD", 'Uniformes');
+define("User_BD", 'root');
+define("Pass_BD", 'samir');
 
 function conecta()
 {
