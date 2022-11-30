@@ -1,6 +1,4 @@
 <?php
-include_once 'conexion.php';
-include_once 'obtener_datos.php';
 
 
     if (isset($_POST['btn-agr-cot'])) {
@@ -19,4 +17,3 @@ include_once 'obtener_datos.php';
 
         header("Location: ../index.php");
     }
-?>
